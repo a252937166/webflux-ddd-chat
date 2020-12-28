@@ -1,4 +1,4 @@
-package com.ouyanglol.chat.reactorchatstart;
+package com.ouyanglol.chat.start;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

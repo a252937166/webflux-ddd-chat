@@ -6,7 +6,6 @@
 		<artifactId>reactor-chat</artifactId>
 		<groupId>com.ouyanglol</groupId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath/>
 	</parent>
 	<groupId>com.ouyanglol.chat</groupId>
 	<artifactId>reactor-chat-start</artifactId>
