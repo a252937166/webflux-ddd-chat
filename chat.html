@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>聊天</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+对方状态:<p id="userStatus">?</p>
+<br/>
+用户id:<label for="user"></label><input id="user" type="text"/>
+<br/>
+消息:<label for="text"></label><input id="text" type="text"/>
+&nbsp;&nbsp;&nbsp;
+<button onclick="sendMsg()">发送消息</button>
+</body>
+
+<script>
+    //发送消息
+    function sendMsg() {
+        let message = document.getElementById('text').value;
+        let user = document.getElementById('user').value;
+        let data = {
+            "content": message,
+            "fromId": "2",
+            "toId": user,
+            "type": "TEXT"
+        }
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8010/message/send",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(data),
+            dataType: "json",
+            success: function (message) {
+                if (message > 0) {
+                    alert("请求已提交！我们会尽快与您取得联系");
+                }
+            }
+        });
+    }
+
+    $(function(){
+        setInterval(function(){
+            getUser();
+        }, 3000);
+    });
+
+    //获取用户状态
+    function getUser() {
+        var user = document.getElementById('user').value;
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8010/user?userId="+user,
+            contentType: "application/json; charset=utf-8",
+            success: function (message) {
+                if (!!message) {
+                    let status = message.status === 1 ? "在线" : "离线";
+                    $("#userStatus").text(status);
+                }
+            }
+        });
+    }
+
+</script>
+</html>
