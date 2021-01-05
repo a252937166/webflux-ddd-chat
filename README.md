@@ -26,12 +26,17 @@
 
 # 自测使用
 
+## 项目启动
+
+依次启动ReactorEurekaApplication、ReactorChatStartApplication、ReactorChatConsumerApplication。
+使用chat.html可以发送消息和查看用户状态。
+
 ## 接收消息
 
 打开页面：http://${HOST}:8010/message/get?userId=${user}
 可以看到user接收的消息列表，页面打开过程中代表user在线
 
-# 发送消息
+## 发送消息
 
 打开chat.html，填入userId和消息内容，点击发送按钮即可向user发送消息，对方页面打开和关闭时，可以看到对方用户状态切换。
 
